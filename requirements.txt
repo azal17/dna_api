@@ -3,4 +3,7 @@ fastapi
 openai
 python-multipart
 pydantic
+uvicorn==0.27.1
+
+
 
