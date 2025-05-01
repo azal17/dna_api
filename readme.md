@@ -41,7 +41,7 @@ This FastAPI based project provides endpoints to
 
 - DNA sequences are generated using the s() function based on user attributes (id, region, age, seed).
 - Each sequence is split into substrings of length k and are converted into hash values.
-- Use IOU for similarity score.
+- Uses IOU for similarity score.
 
 ---
 
@@ -54,5 +54,10 @@ This FastAPI based project provides endpoints to
 - Deployed: Final app deployed on Render.
 
 ---
-
+##  Installation
+- Clone the repository.
+- Create a virtual environment.
+- Install dependencies.
+- Set an OpenAI API Key.
+- Run the app.
 
