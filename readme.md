@@ -37,5 +37,22 @@ This FastAPI based project provides endpoints to
 | POST   | `/ask-me-anything/`      | Ask questions     |
 
 ---
+##  How Comparisons Work
+
+- DNA sequences are generated using the s() function based on user attributes (id, region, age, seed).
+- Each sequence is split into substrings of length k and are converted into hash values.
+- Use IOU for similarity score.
+
+---
+
+##  Project Flow
+- Cleaned Dataset: Preprocessed in Google Colab (nulls/outliers removed).
+- Upload: CSV uploaded via FastAPI.
+- Generate: DNA sequences generated using provided s() function.
+- Compare: Sequences are compared.
+- AMA: "Ask Me Anything" endpoint.
+- Deployed: Final app deployed on Render.
+
+---
 
 
