@@ -11,6 +11,11 @@ import os
 app = FastAPI()
 DATA = None  
 
+@app.get("/")
+def read_root():
+    return {"message": "API is working!"}
+
+
 @app.post("/upload-csv/")
 async def upload_csv(file: UploadFile = File(...)):
     global DATA
