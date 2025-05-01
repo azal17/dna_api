@@ -26,7 +26,16 @@ This FastAPI based project provides endpoints to
 
 ---
 
-## Endpoints
+##  Installation
+- Clone the repository.
+- Create a virtual environment.
+- Install dependencies.
+- Set an OpenAI API Key.
+- Run the app
+
+---
+
+## Testable Endpoints
 
 | Method | Endpoint                  | Description                             |
 |--------|---------------------------|-----------------------------------------|
@@ -35,6 +44,8 @@ This FastAPI based project provides endpoints to
 | GET    | `/generate-sequence/`    | Generate DNA sequence by user ID       |
 | GET    | `/compare-sequences/`    | Compare DNA sequences      |
 | POST   | `/ask-me-anything/`      | Ask questions     |
+
+Tested using postman application for the above endpoints.
 
 ---
 ##  How Comparisons Work
@@ -54,10 +65,5 @@ This FastAPI based project provides endpoints to
 - Deployed: Final app deployed on Render.
 
 ---
-##  Installation
-- Clone the repository.
-- Create a virtual environment.
-- Install dependencies.
-- Set an OpenAI API Key.
-- Run the app.
+.
 
