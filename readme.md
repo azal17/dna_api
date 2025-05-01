@@ -65,5 +65,5 @@ Tested using postman application for the above endpoints.
 - Deployed: Final app deployed on Render.
 
 ---
-.
+
 
