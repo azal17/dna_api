@@ -63,6 +63,22 @@ def rhash(seq, k, base=256, mod=10**9+7):
         hashes.append(current_hash)
     return hashes
 
+def calculate_similarity(seq1: str, seq2: str, k: int = 4):
+    hashes1 = set(rhash(seq1, k))
+    hashes2 = set(rhash(seq2, k))
+
+    intersection = hashes1 & hashes2
+    union = hashes1 | hashes2
+
+    score = len(intersection) / len(union) if union else 0
+
+    return {
+        "similarity_score": round(score, 4),
+        "common_kmers": len(intersection),
+        "total_kmers_1": len(hashes1),
+        "total_kmers_2": len(hashes2)
+    }
+
 @app.get("/compare-sequences/")
 def compare_sequences(id1: str, id2: str, k: int = 4):
     global DATA
@@ -81,23 +97,11 @@ def compare_sequences(id1: str, id2: str, k: int = 4):
     seq1 = s(row1["id"], row1["region"], int(row1["age"]), row1["seed"])
     seq2 = s(row2["id"], row2["region"], int(row2["age"]), row2["seed"])
 
-
-    hashes1 = set(rhash(seq1, k))
-    hashes2 = set(rhash(seq2, k))
-
-    intersection = hashes1 & hashes2
-    union = hashes1 | hashes2
-
-
-    score = len(intersection) / len(union) if union else 0
-    
+    result = calculate_similarity(seq1, seq2, k)
     return {
         "id1": id1,
         "id2": id2,
-        "similarity_score": round(score, 4),
-        "common_kmers": len(intersection),
-        "total_kmers_1": len(hashes1),
-        "total_kmers_2": len(hashes2)
+        **result
     }
 
 
