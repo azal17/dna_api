@@ -6,6 +6,9 @@ import openai
 from pydantic import BaseModel
 import os
 
+from description_for_ama import ask_gemini
+from dotenv import load_dotenv
+load_dotenv()
 
 
 app = FastAPI()
@@ -111,18 +114,32 @@ def compare_sequences(id1: str, id2: str, k: int = 4):
 class QuestionInput(BaseModel):
     question: str
 
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# openai.api_key = os.getenv("OPENAI_API_KEY")
+# @app.post("/ask-me-anything/")
+# def ask_me(input: QuestionInput):
+#     try:
+#         response = openai.chat.completions.create(
+#             model="gpt-3.5-turbo",
+#             messages=[
+#                 {"role": "system", "content": "You are an assistant helping users understand this server."},
+#                 {"role": "user", "content": input.question}
+#             ]
+#         )
+#         answer = response.choices[0].message.content.strip()
+#         return {
+#             "question": input.question,
+#             "answer": answer
+#         }
+#     except Exception as e:
+#         raise HTTPException(status_code=500, detail=f"Error: {str(e)}")
+
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
+
+
 @app.post("/ask-me-anything/")
 def ask_me(input: QuestionInput):
     try:
-        response = openai.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[
-                {"role": "system", "content": "You are an assistant helping users understand this server."},
-                {"role": "user", "content": input.question}
-            ]
-        )
-        answer = response.choices[0].message.content.strip()
+        answer = ask_gemini(input.question)
         return {
             "question": input.question,
             "answer": answer
