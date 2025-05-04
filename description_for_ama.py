@@ -26,7 +26,7 @@ Always explain clearly, based on the server's documented features."""
 
 def ask_gemini(prompt):
     try:
-        model = genai.GenerativeModel("gemini-pro")
+        model = genai.GenerativeModel("gemini-pro-2.5")
         convo = model.start_chat()
         convo.send_message(INITIAL_PROMPT)
         response = convo.send_message(prompt)
