@@ -1,4 +1,5 @@
 from main import calculate_similarity  
+
 import pytest
 def test_identical_sequences():
     seq = "CGTAC"
